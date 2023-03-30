@@ -2,6 +2,16 @@
   box-sizing: border-box;
   font-family: sans-serif;
 }
+.preloader {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./assets/Preloader_2.gif) 50% 50% no-repeat #fff;
+}
+
 .container {
   margin: 10px auto;
   width: 65%;
@@ -14,14 +24,13 @@
 .section-1 p {
   letter-spacing: 2px;
 }
-.section-1 .images {
-}
 .section-1 .images img {
   width: 40px;
 }
 .section-1 .images img:last-child {
   margin-left: 20px;
 }
+
 .section-2 {
   border-radius: 10px;
   border: 3px solid #ff9800;
@@ -53,7 +62,7 @@
 .section-2 ul:first-of-type {
   margin-bottom: 135px;
 }
- .section-2 .p-parent {
+.section-2 .p-parent {
   display: flex;
   justify-content: space-around;
 }
@@ -79,6 +88,7 @@
   right: -20px;
   top: 4px;
 }
+
 .section-3 {
   display: flex;
   position: relative;
