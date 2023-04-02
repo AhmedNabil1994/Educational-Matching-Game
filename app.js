@@ -6,13 +6,13 @@ window.onload = setTimeout(() => {
   container.style.display = "block";
 }, 1000);
 
-let addCloseButton = (parentElement)=>{
+let addCloseButton = (parentElement) => {
   let closeButton = document.createElement("span");
   closeButton.className = "close-button";
   let closeButtonText = document.createTextNode("X");
   closeButton.appendChild(closeButtonText);
   parentElement.appendChild(closeButton);
-}
+};
 // Create help popup
 document.querySelector(".image-2").addEventListener("click", () => {
   container.style.opacity = "0.3";
@@ -22,7 +22,7 @@ document.querySelector(".image-2").addEventListener("click", () => {
   let pText = document.createTextNode("Help content goes here.");
   p.appendChild(pText);
   popupHelp.appendChild(p);
-  addCloseButton(popupHelp)
+  addCloseButton(popupHelp);
   document.body.appendChild(popupHelp);
 });
 
@@ -34,7 +34,7 @@ document.querySelector(".image-1").addEventListener("click", () => {
   let image = document.createElement("img");
   image.src = "./assets/dummy.jpg";
   popupImage.appendChild(image);
-  addCloseButton(popupImage)
+  addCloseButton(popupImage);
   document.body.appendChild(popupImage);
 });
 
@@ -45,3 +45,35 @@ document.addEventListener("click", (e) => {
     container.style.opacity = "1";
   }
 });
+
+// Matching functionality
+document.querySelectorAll(".img-parent").forEach((image) => {
+  image.addEventListener("click", (e) => {
+    let out = e.target.className;
+    document.querySelectorAll(".p-parent").forEach((p) => {
+      p.addEventListener("click", (e) => {
+        if (e.target.textContent === out) {
+          document.getElementById("correct").play();
+        } else {
+          document.getElementById("incorrect").play();
+          const image = e.target.nextElementSibling;
+          image.style.display = "block";
+          let isVisible = true;
+          const intervalId = setInterval(() => {
+            if (isVisible) {
+              image.style.display = "none";
+            } else {
+              image.style.display = "block";
+            }
+            isVisible = !isVisible;
+          }, 1000);
+          setTimeout(() => {
+            clearInterval(intervalId);
+            image.style.display = "none";
+          }, 3000);
+        }
+      });
+    });
+  });
+});
+
