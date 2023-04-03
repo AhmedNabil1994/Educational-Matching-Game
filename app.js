@@ -16,9 +16,12 @@ function scalability() {
   }
   wholePage.style.transform = `scale(${scaleFactor})`;
 }
-scalability();
+// scalability();
 window.addEventListener("resize", () => {
   scalability();
+});
+window.addEventListener("load", () => {
+  // scalability();
 });
 
 // Close button function
@@ -30,9 +33,16 @@ let addCloseButton = (parentElement) => {
   parentElement.appendChild(closeButton);
 };
 
+// Opacity change function
+function changePageOpacity() {
+  document.querySelector(".section-1").style.opacity = "0.3";
+  document.querySelector(".section-2").style.opacity = "0.3";
+  document.querySelector(".section-3").style.opacity = "0.3";
+}
+
 // Create help popup
 document.querySelector(".image-2").addEventListener("click", () => {
-  container.style.opacity = "0.3";
+  changePageOpacity();
   let popupHelp = document.createElement("div");
   popupHelp.className = "popup-help";
   let p = document.createElement("p");
@@ -40,12 +50,12 @@ document.querySelector(".image-2").addEventListener("click", () => {
   p.appendChild(pText);
   popupHelp.appendChild(p);
   addCloseButton(popupHelp);
-  document.body.appendChild(popupHelp);
+  wholePage.appendChild(popupHelp);
 });
 
 // Create dummy image popup
 document.querySelector(".image-1").addEventListener("click", () => {
-  container.style.opacity = "0.3";
+  changePageOpacity();
   let popupContainer = document.createElement("div");
   popupContainer.className = "popup-container";
   let popupImage = document.createElement("div");
@@ -55,14 +65,16 @@ document.querySelector(".image-1").addEventListener("click", () => {
   popupImage.appendChild(image);
   popupContainer.appendChild(popupImage);
   addCloseButton(popupContainer);
-  document.body.appendChild(popupContainer);
+  wholePage.appendChild(popupContainer);
 });
 
 // Close the popups
 document.addEventListener("click", (e) => {
   if (e.target.className == "close-button") {
     e.target.parentNode.remove();
-    container.style.opacity = "1";
+    document.querySelector(".section-1").style.opacity = "1";
+    document.querySelector(".section-2").style.opacity = "1";
+    document.querySelector(".section-3").style.opacity = "1";
   }
 });
 
