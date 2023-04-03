@@ -79,31 +79,69 @@ document.addEventListener("click", (e) => {
 });
 
 // Matching functionality
-document.querySelectorAll(".img-parent").forEach((image) => {
-  image.addEventListener("click", (e) => {
-    let out = e.target.className;
-    document.querySelectorAll(".p-parent").forEach((p) => {
-      p.addEventListener("click", (e) => {
-        if (e.target.textContent === out) {
-          document.getElementById("correct").play();
-        } else {
+// document.querySelectorAll(".img-parent").forEach((image) => {
+//   image.addEventListener("click", (e) => {
+//     let out = e.target.className;
+//     document.querySelectorAll(".p-parent").forEach((p) => {
+//       p.addEventListener("click", (e) => {
+//         if (e.target.textContent === out) {
+//           document.getElementById("correct").play();
+//         } else {
+//           document.getElementById("incorrect").play();
+//           const image = e.target.nextElementSibling;
+//           image.style.display = "block";
+//           let isVisible = true;
+//           const intervalId = setInterval(() => {
+//             if (isVisible) {
+//               image.style.display = "none";
+//             } else {
+//               image.style.display = "block";
+//             }
+//             isVisible = !isVisible;
+//           }, 1000);
+//           setTimeout(() => {
+//             clearInterval(intervalId);
+//             image.style.display = "none";
+//           }, 3000);
+//         }
+//       });
+//     });
+//   });
+// });
+
+
+
+
+
+const imageDivs = document.querySelectorAll(".image");
+const wordDivs = document.querySelectorAll(".word");
+
+imageDivs.forEach((imageDiv) => {
+  imageDiv.addEventListener("click", (e) => {
+    let imageName = imageDiv.querySelector("img").className;
+    imageDivs.forEach((div) => {
+      div.querySelector(".bullet").classList.remove("clicked");
+    });
+    imageDiv.querySelector(".bullet").classList.add("clicked");
+    // when you click the word
+    wordDivs.forEach((wordDiv) => {
+      wordDiv.addEventListener("click", (e) => {
+        if (imageName !== wordDiv.querySelector("span").textContent) {
           document.getElementById("incorrect").play();
-          const image = e.target.nextElementSibling;
-          image.style.display = "block";
+          const crossMarkImage = wordDiv.querySelector(".cross-mark");
+          crossMarkImage.style.display = "block";
           let isVisible = true;
-          const intervalId = setInterval(() => {
-            if (isVisible) {
-              image.style.display = "none";
-            } else {
-              image.style.display = "block";
-            }
-            isVisible = !isVisible;
-          }, 1000);
+          const intervalId = setInterval(() => {}, 1000);
           setTimeout(() => {
             clearInterval(intervalId);
-            image.style.display = "none";
-          }, 3000);
+            crossMarkImage.style.display = "none";
+            wordDiv.querySelector(".bullet").classList.remove("clicked");
+          }, 2000);
         }
+        wordDivs.forEach((div) => {
+          div.querySelector(".bullet").classList.remove("clicked");
+        });
+        wordDiv.querySelector(".bullet").classList.add("clicked");
       });
     });
   });

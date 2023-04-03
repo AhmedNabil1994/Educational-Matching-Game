@@ -77,6 +77,10 @@
   cursor: pointer;
   margin: 15px auto;
 }
+.bullet.clicked {
+  background-color: #2196f3;
+  border-color: red;
+}
 .whole-page {
   margin: 10px auto;
   width: 1000px;
@@ -127,8 +131,15 @@
   height: 120px;
   cursor: pointer;
 }
-.section-2 .words img {
+.section-2 .word {
+  position: relative;
+}
+.section-2 .word img {
   display: none;
+  position: absolute;
+  width: 30px;
+  top: 85px;
+  left: 107px;
 }
 .section-2 .matching-lines {
   height: 180px;
