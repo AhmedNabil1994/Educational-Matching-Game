@@ -29,13 +29,16 @@ document.querySelector(".image-2").addEventListener("click", () => {
 // Create dummy image popup
 document.querySelector(".image-1").addEventListener("click", () => {
   container.style.opacity = "0.3";
+  let popupContainer = document.createElement("div");
+  popupContainer.className = "popup-container";
   let popupImage = document.createElement("div");
   popupImage.className = "popup-image";
   let image = document.createElement("img");
   image.src = "./assets/dummy.jpg";
   popupImage.appendChild(image);
-  addCloseButton(popupImage);
-  document.body.appendChild(popupImage);
+  popupContainer.appendChild(popupImage);
+  addCloseButton(popupContainer);
+  document.body.appendChild(popupContainer);
 });
 
 // Close the popups
