@@ -17,7 +17,8 @@ function scalabilityHandler() {
   wholePage.style.transform = `scale(${scaleFactor})`;
 }
 window.addEventListener("resize", () => {
-  scalabilityHandler});
+  scalabilityHandler();
+});
 window.addEventListener("load", () => {
   scalabilityHandler();
 });
