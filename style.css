@@ -62,15 +62,9 @@ body {
   cursor: pointer;
 }
 .popup-container img {
-  /* width: 98%; */
-  /* max-width: 105%; */
-  /* height: 95%; */
-  /* max-height: 110%; */
-  /* position: absolute; */
-  /* top: 9px; */
-  /* left: 9px; */
   margin: -134px;
 }
+/* Bullets */
 .bullet {
   list-style: none;
   width: 17px;
@@ -87,8 +81,6 @@ body {
 .whole-page {
   margin: 10px auto;
   width: 1000px;
-  /* width: 65%; */
-  /* height: 700px; */
   transition: transform 0.3s ease;
   transform-origin: top left;
 }

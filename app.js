@@ -16,12 +16,8 @@ function scalability() {
   }
   wholePage.style.transform = `scale(${scaleFactor})`;
 }
-// scalability();
 window.addEventListener("resize", () => {
   scalability();
-});
-window.addEventListener("load", () => {
-  // scalability();
 });
 
 // Close button function
@@ -88,10 +84,11 @@ imageDivs.forEach((imageDiv) => {
   imageDiv.addEventListener("click", (e) => {
     selectedImage = imageDiv;
     imageName = imageDiv.querySelector("img").className;
-    console.log(imageName);
+    // Remove all clicked classes from all bullets
     imageDivs.forEach((div) => {
       div.querySelector(".bullet").classList.remove("clicked");
     });
+    // Add clicked class to the current bullet
     imageDiv.querySelector(".bullet").classList.add("clicked");
   });
 });
@@ -104,19 +101,20 @@ wordDivs.forEach((wordDiv) => {
           div.querySelector(".bullet").classList.remove("clicked");
         });
         wordDiv.querySelector(".bullet").classList.add("clicked");
-        console.log(wordDiv.querySelector("span").textContent);
-        getMatchingResult(wordDiv, selectedImage);
+        matching(wordDiv, selectedImage);
       }
     });
   });
 });
 
-// Comparison function
-function getMatchingResult(wordDiv, imageDiv) {
+// Matching function
+function matching(wordDiv, imageDiv) {
+  // Case of not matching 
   if (imageName !== wordDiv.querySelector("span").textContent) {
     document.getElementById("incorrect").play();
     const crossMarkImage = wordDiv.querySelector(".cross-mark");
     crossMarkImage.style.display = "block";
+    // Image and image bullet show and hide
     const intervalId = setInterval(() => {}, 1000);
     setTimeout(() => {
       clearInterval(intervalId);
