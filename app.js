@@ -93,10 +93,6 @@ wordDivs.forEach((wordDiv) => {
   wordDiv.addEventListener("click", (e) => {
     imageDivs.forEach((div) => {
       if (div.querySelector(".bullet").classList.contains("clicked")) {
-        wordDivs.forEach((div) => {
-          div.querySelector(".bullet").classList.remove("clicked");
-        });
-        wordDiv.querySelector(".bullet").classList.add("clicked");
         matching(wordDiv, selectedImage);
       }
     });
