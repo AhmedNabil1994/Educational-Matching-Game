@@ -79,70 +79,94 @@ document.addEventListener("click", (e) => {
 });
 
 // Matching functionality
-// document.querySelectorAll(".img-parent").forEach((image) => {
-//   image.addEventListener("click", (e) => {
-//     let out = e.target.className;
-//     document.querySelectorAll(".p-parent").forEach((p) => {
-//       p.addEventListener("click", (e) => {
-//         if (e.target.textContent === out) {
-//           document.getElementById("correct").play();
-//         } else {
-//           document.getElementById("incorrect").play();
-//           const image = e.target.nextElementSibling;
-//           image.style.display = "block";
-//           let isVisible = true;
-//           const intervalId = setInterval(() => {
-//             if (isVisible) {
-//               image.style.display = "none";
-//             } else {
-//               image.style.display = "block";
-//             }
-//             isVisible = !isVisible;
-//           }, 1000);
-//           setTimeout(() => {
-//             clearInterval(intervalId);
-//             image.style.display = "none";
-//           }, 3000);
-//         }
-//       });
-//     });
-//   });
-// });
-
-
-
-
-
 const imageDivs = document.querySelectorAll(".image");
 const wordDivs = document.querySelectorAll(".word");
-
+let imageName = "";
+let selectedImage = "";
+// Image clicking
 imageDivs.forEach((imageDiv) => {
   imageDiv.addEventListener("click", (e) => {
-    let imageName = imageDiv.querySelector("img").className;
+    selectedImage = imageDiv;
+    imageName = imageDiv.querySelector("img").className;
+    console.log(imageName);
     imageDivs.forEach((div) => {
       div.querySelector(".bullet").classList.remove("clicked");
     });
     imageDiv.querySelector(".bullet").classList.add("clicked");
-    // when you click the word
-    wordDivs.forEach((wordDiv) => {
-      wordDiv.addEventListener("click", (e) => {
-        if (imageName !== wordDiv.querySelector("span").textContent) {
-          document.getElementById("incorrect").play();
-          const crossMarkImage = wordDiv.querySelector(".cross-mark");
-          crossMarkImage.style.display = "block";
-          let isVisible = true;
-          const intervalId = setInterval(() => {}, 1000);
-          setTimeout(() => {
-            clearInterval(intervalId);
-            crossMarkImage.style.display = "none";
-            wordDiv.querySelector(".bullet").classList.remove("clicked");
-          }, 2000);
-        }
+  });
+});
+// Word clicking
+wordDivs.forEach((wordDiv) => {
+  wordDiv.addEventListener("click", (e) => {
+    imageDivs.forEach((div) => {
+      if (div.querySelector(".bullet").classList.contains("clicked")) {
         wordDivs.forEach((div) => {
           div.querySelector(".bullet").classList.remove("clicked");
         });
         wordDiv.querySelector(".bullet").classList.add("clicked");
-      });
+        console.log(wordDiv.querySelector("span").textContent);
+        getMatchingResult(wordDiv, selectedImage);
+      }
     });
   });
 });
+
+// Comparison function
+function getMatchingResult(wordDiv, imageDiv) {
+  if (imageName !== wordDiv.querySelector("span").textContent) {
+    document.getElementById("incorrect").play();
+    const crossMarkImage = wordDiv.querySelector(".cross-mark");
+    crossMarkImage.style.display = "block";
+    const intervalId = setInterval(() => {}, 1000);
+    setTimeout(() => {
+      clearInterval(intervalId);
+      crossMarkImage.style.display = "none";
+      wordDiv.querySelector(".bullet").classList.remove("clicked");
+    }, 2000);
+  } else {
+    document.getElementById("correct").play();
+    imageDiv.querySelector(".bullet").classList.remove("clicked");
+    wordDiv.querySelector(".bullet").classList.remove("clicked");
+    imageDiv.style.opacity = "0.3";
+    wordDiv.style.opacity = "0.3";
+    imageDiv.style.pointerEvents = "none";
+    wordDiv.style.pointerEvents = "none";
+    document.getElementById(imageName).style.display = "block"
+  }
+}
+
+// Reset function
+document.querySelector(".replay").addEventListener("click",()=>{
+  document.querySelectorAll(".bullet").forEach((bullet)=>{
+    bullet.classList.remove("clicked")
+  })
+  imageDivs.forEach((div) => {
+    div.style.opacity = "1"
+    div.style.pointerEvents = "auto"
+  });
+  wordDivs.forEach((div) => {
+    div.style.opacity = "1"
+    div.style.pointerEvents = "auto"
+  });
+  document.querySelectorAll("line").forEach((line) => {
+    line.style.display = "none"
+  });
+})
+
+// Show amswer function
+document.querySelector(".showAnswer").addEventListener("click",()=>{
+  document.querySelectorAll(".bullet").forEach((bullet)=>{
+    bullet.classList.remove("clicked")
+  })
+  imageDivs.forEach((div) => {
+    div.style.opacity = "0.3"
+    div.style.pointerEvents = "none"
+  });
+  wordDivs.forEach((div) => {
+    div.style.opacity = "0.3"
+    div.style.pointerEvents = "none"
+  });
+  document.querySelectorAll("line").forEach((line) => {
+    line.style.display = "block"
+  });
+})
