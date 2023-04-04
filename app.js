@@ -11,10 +11,7 @@ const body = document.querySelector("body");
 let scaleFactor;
 function scalabilityHandler(e) {
   scaleFactor = body.clientWidth / wholePage.clientWidth;
-  if (scaleFactor > 1) {
-    return;
-  }
-  wholePage.style.transform = `scale(${scaleFactor})`;
+  wholePage.style.transform = `scale(${scaleFactor > 1 ? 1 : scaleFactor})`;
 }
 window.addEventListener("resize", scalabilityHandler);
 window.addEventListener("load", scalabilityHandler);
@@ -167,3 +164,5 @@ document.querySelector(".showAnswer").addEventListener("click", () => {
     line.style.display = "block";
   });
 });
+
+

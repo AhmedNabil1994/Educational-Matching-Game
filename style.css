@@ -30,13 +30,6 @@ body {
   z-index: 9999;
   padding: 0.5rem;
 }
-@media (min-width: 1200px) {
-  .popup-help,
-  .popup-container {
-    width: 70%;
-    height: 76%;
-  }
-}
 .popup-container .popup-image {
   overflow: scroll;
   width: 100%;
@@ -48,8 +41,8 @@ body {
 .popup-help .close-button,
 .popup-container .close-button {
   position: absolute;
-  top: 11px;
-  right: -2px;
+  top: 5px;
+  right: 5px;
   width: 40px;
   height: 40px;
   background-color: red;
