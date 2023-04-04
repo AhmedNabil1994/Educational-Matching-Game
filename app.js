@@ -9,19 +9,15 @@ window.onload = setTimeout(() => {
 // Scalability function
 const body = document.querySelector("body");
 let scaleFactor;
-function scalabilityHandler() {
+function scalabilityHandler(e) {
   scaleFactor = body.clientWidth / wholePage.clientWidth;
   if (scaleFactor > 1) {
     return;
   }
   wholePage.style.transform = `scale(${scaleFactor})`;
 }
-window.addEventListener("resize", () => {
-  scalabilityHandler();
-});
-window.addEventListener("load", () => {
-  scalabilityHandler();
-});
+window.addEventListener("resize", scalabilityHandler);
+window.addEventListener("load", scalabilityHandler);
 
 // Close button function
 let addCloseButton = (parentElement) => {
