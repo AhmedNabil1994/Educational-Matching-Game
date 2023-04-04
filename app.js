@@ -9,7 +9,7 @@ window.onload = setTimeout(() => {
 // Scalability function
 const body = document.querySelector("body");
 let scaleFactor;
-function scalability() {
+function scalabilityHandler() {
   scaleFactor = body.clientWidth / wholePage.clientWidth;
   if (scaleFactor > 1) {
     return;
@@ -17,7 +17,9 @@ function scalability() {
   wholePage.style.transform = `scale(${scaleFactor})`;
 }
 window.addEventListener("resize", () => {
-  scalability();
+  scalabilityHandler});
+window.addEventListener("load", () => {
+  scalabilityHandler();
 });
 
 // Close button function
@@ -109,7 +111,7 @@ wordDivs.forEach((wordDiv) => {
 
 // Matching function
 function matching(wordDiv, imageDiv) {
-  // Case of not matching 
+  // Case of not matching
   if (imageName !== wordDiv.querySelector("span").textContent) {
     document.getElementById("incorrect").play();
     const crossMarkImage = wordDiv.querySelector(".cross-mark");
@@ -129,42 +131,42 @@ function matching(wordDiv, imageDiv) {
     wordDiv.style.opacity = "0.3";
     imageDiv.style.pointerEvents = "none";
     wordDiv.style.pointerEvents = "none";
-    document.getElementById(imageName).style.display = "block"
+    document.getElementById(imageName).style.display = "block";
   }
 }
 
 // Reset function
-document.querySelector(".replay").addEventListener("click",()=>{
-  document.querySelectorAll(".bullet").forEach((bullet)=>{
-    bullet.classList.remove("clicked")
-  })
+document.querySelector(".replay").addEventListener("click", () => {
+  document.querySelectorAll(".bullet").forEach((bullet) => {
+    bullet.classList.remove("clicked");
+  });
   imageDivs.forEach((div) => {
-    div.style.opacity = "1"
-    div.style.pointerEvents = "auto"
+    div.style.opacity = "1";
+    div.style.pointerEvents = "auto";
   });
   wordDivs.forEach((div) => {
-    div.style.opacity = "1"
-    div.style.pointerEvents = "auto"
+    div.style.opacity = "1";
+    div.style.pointerEvents = "auto";
   });
   document.querySelectorAll("line").forEach((line) => {
-    line.style.display = "none"
+    line.style.display = "none";
   });
-})
+});
 
 // Show amswer function
-document.querySelector(".showAnswer").addEventListener("click",()=>{
-  document.querySelectorAll(".bullet").forEach((bullet)=>{
-    bullet.classList.remove("clicked")
-  })
+document.querySelector(".showAnswer").addEventListener("click", () => {
+  document.querySelectorAll(".bullet").forEach((bullet) => {
+    bullet.classList.remove("clicked");
+  });
   imageDivs.forEach((div) => {
-    div.style.opacity = "0.3"
-    div.style.pointerEvents = "none"
+    div.style.opacity = "0.3";
+    div.style.pointerEvents = "none";
   });
   wordDivs.forEach((div) => {
-    div.style.opacity = "0.3"
-    div.style.pointerEvents = "none"
+    div.style.opacity = "0.3";
+    div.style.pointerEvents = "none";
   });
   document.querySelectorAll("line").forEach((line) => {
-    line.style.display = "block"
+    line.style.display = "block";
   });
-})
+});
