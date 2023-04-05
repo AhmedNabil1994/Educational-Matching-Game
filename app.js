@@ -107,6 +107,7 @@ function matching(wordDiv, imageDiv) {
     const crossMarkImage = wordDiv.querySelector(".cross-mark");
     crossMarkImage.style.display = "block";
     // Image and image bullet show and hide
+    wordDiv.querySelector(".bullet").classList.add("clicked");
     const intervalId = setInterval(() => {}, 1000);
     setTimeout(() => {
       clearInterval(intervalId);
@@ -160,5 +161,3 @@ document.querySelector(".showAnswer").addEventListener("click", () => {
     line.style.display = "block";
   });
 });
-
-
