@@ -105,8 +105,8 @@ function matching(wordDiv, imageDiv) {
   if (imageName !== wordDiv.querySelector("span").textContent) {
     document.getElementById("incorrect").play();
     const crossMarkImage = wordDiv.querySelector(".cross-mark");
-    crossMarkImage.style.display = "block";
     // Image and image bullet show and hide
+    crossMarkImage.style.display = "block";
     wordDiv.querySelector(".bullet").classList.add("clicked");
     const intervalId = setInterval(() => {}, 1000);
     setTimeout(() => {
