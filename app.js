@@ -75,11 +75,12 @@ const imageDivs = document.querySelectorAll(".image");
 const wordDivs = document.querySelectorAll(".word");
 let imageName = "";
 let selectedImage = "";
+
 // Image clicking
 imageDivs.forEach((imageDiv) => {
   imageDiv.addEventListener("click", (e) => {
     selectedImage = imageDiv;
-    imageName = imageDiv.querySelector("img").className;
+    imageName = imageDiv.querySelector("img").dataset.name;
     // Remove all clicked classes from all bullets
     imageDivs.forEach((div) => {
       div.querySelector(".bullet").classList.remove("clicked");
@@ -102,7 +103,7 @@ wordDivs.forEach((wordDiv) => {
 // Matching function
 function matching(wordDiv, imageDiv) {
   // Case of not matching
-  if (imageName !== wordDiv.querySelector("span").textContent) {
+  if (imageName !== wordDiv.querySelector("span").dataset.content) {
     document.getElementById("incorrect").play();
     const crossMarkImage = wordDiv.querySelector(".cross-mark");
     // Image and image bullet show and hide
