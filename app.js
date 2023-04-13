@@ -75,7 +75,6 @@ const imageDivs = document.querySelectorAll(".image");
 const wordDivs = document.querySelectorAll(".word");
 let imageName = "";
 let selectedImage = "";
-
 // Image clicking
 imageDivs.forEach((imageDiv) => {
   imageDiv.addEventListener("click", (e) => {

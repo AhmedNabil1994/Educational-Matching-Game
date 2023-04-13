@@ -20,13 +20,16 @@
     ></script>
   </head>
   <body>
+    <!-- Audio tags -->
     <audio id="correct" src="./assets/correct-6033.mp3"></audio>
     <audio
       id="incorrect"
       src="./assets/buzzer-or-wrong-answer-20582.mp3"
     ></audio>
+    <!-- The preloader -->
     <div class="preloader"></div>
-    <div class="whole-page" id="element">
+    <!-- Game container -->
+    <div class="whole-page">
       <!-- The header -->
       <div class="section-1 mx-4">
         <div class="row">
@@ -52,19 +55,19 @@
               src="./assets/scissors.png"
               alt="Scissors"
             />
-            <div class="bullet queClick"></div>
+            <div class="bullet"></div>
           </div>
           <div class="col-3 image">
             <img data-name="board" src="./assets/board.png" alt="Board" />
-            <div class="bullet queClick"></div>
+            <div class="bullet"></div>
           </div>
           <div class="col-3 image">
             <img data-name="chair" src="./assets/chair.png" alt="Chair" />
-            <div class="bullet queClick"></div>
+            <div class="bullet"></div>
           </div>
           <div class="col-3 image">
             <img data-name="window" src="./assets/window.png" alt="Window" />
-            <div class="bullet queClick"></div>
+            <div class="bullet"></div>
           </div>
         </div>
         <div class="row matching-lines">
@@ -111,6 +114,7 @@
           <div class="col-3 text-center word">
             <div class="bullet"></div>
             <span data-content="chair">chair</span>
+            <!-- Cross image -->
             <img
               class="cross-mark"
               src="./assets/crossMark.png"

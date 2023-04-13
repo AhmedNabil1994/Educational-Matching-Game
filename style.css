@@ -14,6 +14,7 @@ body {
   height: 100%;
   background: url(./assets/Preloader_2.gif) 50% 50% no-repeat #fff;
 }
+
 /* Popups */
 .popup-help,
 .popup-container {
@@ -57,9 +58,9 @@ body {
 .popup-container img {
   margin: -134px;
 }
+
 /* Bullets */
 .bullet {
-  list-style: none;
   width: 17px;
   height: 17px;
   border: 2px solid orange;
@@ -71,13 +72,16 @@ body {
   background-color: #2196f3;
   border-color: red;
 }
+
+/* Game container */
 .whole-page {
   margin: 10px auto;
   width: 1000px;
   transition: transform 0.3s 0.1s ease-in-out;
   transform-origin: top left;
 }
-/* Section 1 */
+
+/* Section 1 (header) */
 .section-1 {
   margin: 20px 0;
 }
@@ -88,60 +92,40 @@ body {
 .section-1 .image-2 {
   margin-left: 10px;
 }
-/* Section 2 */
+
+/* Section 2 (the game) */
 .section-2 {
+  position: relative;
   border-radius: 10px;
   border: 3px solid #ff9800;
   padding: 50px 10px;
-  position: relative;
   background-color: white;
 }
-.section-2::before {
-  content: "";
-  position: absolute;
-  width: 18px;
-  height: 98%;
-  background-color: #2196f3;
-  left: -20px;
-  top: 4px;
-}
+.section-2::before,
 .section-2::after {
   content: "";
   position: absolute;
   width: 18px;
   height: 98%;
   background-color: #2196f3;
-  right: -20px;
   top: 4px;
+}
+.section-2::before {
+  left: -20px;
+}
+.section-2::after {
+  right: -20px;
 }
 .section-2 .images img {
   width: 120px;
   height: 120px;
   cursor: pointer;
 }
-.section-2 .word {
-  position: relative;
-}
-.section-2 .word img {
-  display: none;
-  position: absolute;
-  width: 30px;
-  top: 85px;
-  left: 107px;
-}
 .section-2 .matching-lines {
   height: 180px;
 }
-.section-2 .matching-lines #scissors,
-.section-2 .matching-lines #board,
-.section-2 .matching-lines #chair,
-.section-2 .matching-lines #window {
+.section-2 .matching-lines line {
   display: none;
-}
-.section-2 span {
-  font-size: 30px;
-  margin: 0;
-  cursor: pointer;
 }
 line {
   stroke-dasharray: 1000;
@@ -153,14 +137,32 @@ line {
     stroke-dashoffset: 0;
   }
 }
-/* Section 3 */
+.section-2 .word {
+  position: relative;
+}
+.section-2 .word img {
+  display: none;
+  position: absolute;
+  width: 30px;
+  top: 85px;
+  left: 107px;
+}
+.section-2 .word span {
+  font-size: 30px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Section 3 (footer) */
 .section-3 {
   position: relative;
 }
 .section-3 img {
-  width: 60px;
   margin-top: 10px;
   cursor: pointer;
+}
+.section-3 .replay img {
+  width: 60px;
 }
 .section-3 .showAnswer img {
   width: 70px;
@@ -169,11 +171,11 @@ line {
 .section-3::before {
   content: "";
   position: absolute;
-  width: 104%;
+  width: calc(100% + 36px);
   background-color: #2196f336;
   height: 80px;
   z-index: -1;
-  left: -17px;
+  left: -18px;
   padding: 11px 0;
   top: -9px;
 }
