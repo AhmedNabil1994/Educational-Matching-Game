@@ -10,7 +10,8 @@ window.onload = setTimeout(() => {
 const body = document.querySelector("body");
 let scaleFactor;
 function scalabilityHandler(e) {
-  scaleFactor = body.clientWidth / wholePage.clientWidth;
+  // wholePage.clientWidth = page width = 1000 px
+  scaleFactor = body.clientWidth / 1000;
   wholePage.style.transform = `scale(${scaleFactor > 1 ? 1 : scaleFactor})`;
 }
 window.addEventListener("resize", scalabilityHandler);
@@ -32,19 +33,6 @@ function changePageOpacity() {
   document.querySelector(".section-3").style.opacity = "0.3";
 }
 
-// Create help popup
-document.querySelector(".image-2").addEventListener("click", () => {
-  changePageOpacity();
-  let popupHelp = document.createElement("div");
-  popupHelp.className = "popup-help";
-  let p = document.createElement("p");
-  let pText = document.createTextNode("Help content goes here.");
-  p.appendChild(pText);
-  popupHelp.appendChild(p);
-  addCloseButton(popupHelp);
-  wholePage.appendChild(popupHelp);
-});
-
 // Create dummy image popup
 document.querySelector(".image-1").addEventListener("click", () => {
   changePageOpacity();
@@ -58,6 +46,19 @@ document.querySelector(".image-1").addEventListener("click", () => {
   popupContainer.appendChild(popupImage);
   addCloseButton(popupContainer);
   wholePage.appendChild(popupContainer);
+});
+
+// Create help popup
+document.querySelector(".image-2").addEventListener("click", () => {
+  changePageOpacity();
+  let popupHelp = document.createElement("div");
+  popupHelp.className = "popup-help";
+  let p = document.createElement("p");
+  let pText = document.createTextNode("Help content goes here.");
+  p.appendChild(pText);
+  popupHelp.appendChild(p);
+  addCloseButton(popupHelp);
+  wholePage.appendChild(popupHelp);
 });
 
 // Close the popups
@@ -84,7 +85,7 @@ imageDivs.forEach((imageDiv) => {
     imageDivs.forEach((div) => {
       div.querySelector(".bullet").classList.remove("clicked");
     });
-    // Add clicked class to the current bullet
+    // Add clicked class to the current clicked bullet
     imageDiv.querySelector(".bullet").classList.add("clicked");
   });
 });
@@ -105,10 +106,11 @@ function matching(wordDiv, imageDiv) {
   if (imageName !== wordDiv.querySelector("span").dataset.content) {
     document.getElementById("incorrect").play();
     const crossMarkImage = wordDiv.querySelector(".cross-mark");
-    // Image and image bullet show and hide
-    crossMarkImage.style.display = "block";
-    wordDiv.querySelector(".bullet").classList.add("clicked");
-    const intervalId = setInterval(() => {}, 1000);
+    // Cross image and bullet show and hide
+    const intervalId = setInterval(() => {
+      crossMarkImage.style.display = "block";
+      wordDiv.querySelector(".bullet").classList.add("clicked");
+    }, 500);
     setTimeout(() => {
       clearInterval(intervalId);
       crossMarkImage.style.display = "none";
@@ -144,7 +146,7 @@ document.querySelector(".replay").addEventListener("click", () => {
   });
 });
 
-// Show amswer function
+// Show answer function
 document.querySelector(".showAnswer").addEventListener("click", () => {
   document.querySelectorAll(".bullet").forEach((bullet) => {
     bullet.classList.remove("clicked");

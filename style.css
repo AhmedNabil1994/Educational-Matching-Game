@@ -5,6 +5,8 @@
 body {
   overflow: hidden;
 }
+
+/* Preloader */
 .preloader {
   position: fixed;
   z-index: 999;
@@ -20,15 +22,12 @@ body {
 .popup-container {
   border-radius: 10px;
   border: 3px solid #ff9800;
-  padding: 30px 10px;
-  background-color: white;
   width: 96%;
   height: 80%;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
   padding: 0.5rem;
 }
 .popup-container .popup-image {
@@ -36,11 +35,16 @@ body {
   width: 100%;
   height: 100%;
 }
+.popup-container img {
+  margin: -134px;
+}
+.popup-help {
+  background-color: white;
+}
 .popup-help p {
   margin: 10px 0 0 10px;
 }
-.popup-help .close-button,
-.popup-container .close-button {
+.close-button {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -54,9 +58,6 @@ body {
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;
-}
-.popup-container img {
-  margin: -134px;
 }
 
 /* Bullets */
