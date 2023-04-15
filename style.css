@@ -5,6 +5,10 @@
 body {
   overflow: hidden;
 }
+/* Page opacity */
+.opacity-change {
+  opacity: 0.3;
+}
 
 /* Preloader */
 .preloader {

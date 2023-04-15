@@ -28,9 +28,9 @@ let addCloseButton = (parentElement) => {
 
 // Opacity change function
 function changePageOpacity() {
-  document.querySelector(".section-1").style.opacity = "0.3";
-  document.querySelector(".section-2").style.opacity = "0.3";
-  document.querySelector(".section-3").style.opacity = "0.3";
+  document.querySelectorAll(".section").forEach((section) => {
+    section.classList.add("opacity-change");
+  });
 }
 
 // Create dummy image popup
@@ -65,9 +65,9 @@ document.querySelector(".image-2").addEventListener("click", () => {
 document.addEventListener("click", (e) => {
   if (e.target.className == "close-button") {
     e.target.parentNode.remove();
-    document.querySelector(".section-1").style.opacity = "1";
-    document.querySelector(".section-2").style.opacity = "1";
-    document.querySelector(".section-3").style.opacity = "1";
+    document.querySelectorAll(".section").forEach((section) => {
+      section.classList.remove("opacity-change");
+    });
   }
 });
 
