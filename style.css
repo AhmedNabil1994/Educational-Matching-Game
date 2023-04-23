@@ -82,7 +82,7 @@ body {
 .whole-page {
   margin: 10px auto;
   width: 1000px;
-  transition: transform 0.3s 0.1s ease-in-out;
+  transition:0.3s 0.1s ease-in-out;
   transform-origin: top left;
 }
 
