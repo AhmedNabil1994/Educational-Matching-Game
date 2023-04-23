@@ -10,7 +10,6 @@ window.onload = setTimeout(() => {
 const body = document.querySelector("body");
 let scaleFactor;
 function scalabilityHandler(e) {
-  // wholePage.clientWidth = page width = 1000 px
   scaleFactor = body.clientWidth / 1000;
   wholePage.style.transform = `scale(${scaleFactor > 1 ? 1 : scaleFactor})`;
 }
